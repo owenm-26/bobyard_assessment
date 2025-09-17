@@ -34,11 +34,11 @@ GRANT CREATE ON SCHEMA public TO bobyard_user;
 ALTER SCHEMA public OWNER TO bobyard_user;
 ```
 
-## Install Django
+## Install Requirements
 ```bash
 python -m venv .venv
 source .venv/bin/activate 
-python -m pip install Django
+pip install requirements.txt -r
 ```
 
 # Running the App
