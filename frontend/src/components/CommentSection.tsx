@@ -23,10 +23,10 @@ function CommentSection() {
   }, []);
 
   return (
-    <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+    <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "80vw", margin: "0 auto"}}>
         <Row gutter={16}>
             {comments.map((comment, key)=>{
-                return (<Col key={key}>{CommentCard(comment)}</Col> )
+                return (<Col span={24} key={key}>{CommentCard(comment)}</Col> )
             })}
         </Row>
     </div>

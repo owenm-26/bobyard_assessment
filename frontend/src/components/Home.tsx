@@ -8,9 +8,9 @@ function Home() {
   return (
     <Layout>
         <CustomHeader/>
-            <Content>
-            <CommentSection/>
-            </Content>
+           
+        <CommentSection/>
+            
         <Footer/>
     </Layout>
   )
