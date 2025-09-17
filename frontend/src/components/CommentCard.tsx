@@ -48,7 +48,7 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
         padding: "1rem 1.5rem",
         display: "flex",
         flexDirection: "column",
-        width: "50rem",
+        width: "100%",
         borderRadius: "15px",
         marginBottom: "1rem", // spacing between comments
         boxShadow: "0 2px 4px rgba(0,0,0,0.1)",

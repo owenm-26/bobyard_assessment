@@ -7,12 +7,17 @@ from .serializers import CommentSerializer
 @api_view(["GET", "POST"])
 def comments_collection(request):
     if request.method == "GET":
-        comments = Comment.objects.all()
+        comments = Comment.objects.all().order_by("date")
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
 
     elif request.method == "POST":
-        serializer = CommentSerializer(data=request.data)
+        data = request.data
+
+        # Detect if data is a list (multiple comments) or a single dict
+        many = isinstance(data, list)
+
+        serializer = CommentSerializer(data=data, many=many)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
