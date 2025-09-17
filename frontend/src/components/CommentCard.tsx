@@ -1,5 +1,9 @@
 import { Avatar } from "antd"
 import type { Comment } from "../types/Comments"
+import { LikeFilled, LikeOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import { editComment } from "../services/api";
+
 
 function convertToCleanTime(datetime: string): string {
   const dateObject = new Date(datetime);
@@ -14,8 +18,30 @@ function convertToCleanTime(datetime: string): string {
   return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
-const CommentCard = (comment: Comment) => {
-  return (
+interface Props {
+  comment: Comment;
+}
+
+
+
+const CommentCard: React.FC<Props> = ({ comment }) => {
+  const [liked, setLiked] = useState<boolean>(false);
+  const [likeCount, setLikeCount] = useState<number>(comment.likes);
+
+    async function handleLike(){
+      const change_factor: number = liked == false ? 1 : -1
+      setLiked(!liked);
+      setLikeCount(likeCount + change_factor)
+      
+      if (!comment.id){
+        console.error("Couldn't write to DB because ID is null")
+        return
+      }
+      await editComment(comment.id, {"likes": likeCount + change_factor});
+    
+    }
+
+    return (
     <div
       style={{
         backgroundColor: "#f1f1f1", // YouTube uses light gray
@@ -44,9 +70,15 @@ const CommentCard = (comment: Comment) => {
         <span style={{ fontSize: "0.8rem", color: "#555" }}>{convertToCleanTime(comment.date)}</span>
       </div>
 
-      {/* Body: comment text */}
       <div>
         <p style={{ margin: 0 }}>{comment.text}</p>
+      </div>
+      <div style={{display: "flex", justifyContent: "end"}}>
+      <span style={{ margin: "0 10px" }}>{likeCount}</span>
+       <button onClick={() => handleLike()}>
+          {liked ? <LikeFilled/> : <LikeOutlined/>}
+        </button>
+        
       </div>
     </div>
   
