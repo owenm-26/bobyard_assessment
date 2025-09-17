@@ -12,7 +12,6 @@ function CommentSection() {
     const fetchComments = async () => {
       try {
         const resp = await getComments();
-        console.log(resp)
         setComments(resp);
       } catch (err) {
         console.error(err);
@@ -23,7 +22,7 @@ function CommentSection() {
   }, []);
 
   return (
-    <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "80vw", margin: "0 auto"}}>
+    <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "80vw", margin: "2rem auto"}}>
         <Row gutter={16}>
             {comments.map((comment, key)=>{
                 return (<Col span={24} key={key}>{<CommentCard comment={comment} />}</Col> )

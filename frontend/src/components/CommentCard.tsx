@@ -64,7 +64,7 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          {comment.image == "" ? <Avatar>{comment.author[0]}</Avatar> : <Avatar src={comment.image}/>}
+          {comment.image == "" ? <Avatar>{comment.author[0]}</Avatar> : <Avatar src={comment.image}>{comment.author[0]}</Avatar>}
           <span style={{ fontWeight: "bold" }}>{comment.author}</span>
         </div>
         <span style={{ fontSize: "0.8rem", color: "#555" }}>{convertToCleanTime(comment.date)}</span>
