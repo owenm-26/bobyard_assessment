@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Comment
+from .admin import Comment
 from .serializers import CommentSerializer
 
 @api_view(["GET", "POST"])
