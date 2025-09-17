@@ -7,6 +7,12 @@ If I had more time I would accomplish part 3 in the following ways:
 3. **Delete Comments**: I would have to pass state around in order to allow a garbage can icon on each comment to affect the comments list in its parent. I would also just use the API I've already written in `api.ts`
 
 
+## Fun things for Future
+Could be interesting to implement the rest of these if I had more time:
+1. User Auth so that comments are more tightly bound to a user
+2. Filtering / Sorting (right now default sort is by time)
+3. Random topic every day for comments to respond to
+
 # Setup
 
 ## The Postgres Database
